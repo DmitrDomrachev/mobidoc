@@ -25,7 +25,7 @@ class OnboardingScreen extends ElementaryWidget<IOnboardingScreenWidgetModel> {
       builder: (_, index) {
         return Scaffold(
           body: SizedBox(
-            width: 390,
+            width: double.infinity,
             child: SafeArea(
               child: Padding(
                 padding:
