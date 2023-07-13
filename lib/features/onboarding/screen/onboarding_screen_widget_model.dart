@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobidoc/features/common/mixin/theme_mixin.dart';
+import 'package:mobidoc/features/login/screen/login_screen.dart';
+import 'package:mobidoc/features/navigation/domain/entity/app_route_paths.dart';
 import 'package:mobidoc/features/onboarding/models/onboarding_data.dart';
 import 'package:mobidoc/features/onboarding/screen/onboarding_screen_export.dart';
 
@@ -93,8 +96,14 @@ class OnboardingScreenWidgetModel
         duration: const Duration(milliseconds: 500),
         curve: Curves.ease,
       );
+    } else {
+      _navigateToLoginScreen(context);
     }
   }
+}
+
+void _navigateToLoginScreen(BuildContext context) {
+  context.router.replaceNamed(AppRoutePaths.loginPath);
 }
 
 /// Interface of [OnboardingScreenWidgetModel].
@@ -119,6 +128,7 @@ abstract class IOnboardingScreenWidgetModel extends IWidgetModel
   bool get isSkipButtonVisible;
 
   /// Switch [currentPage] to next and animate [pageController].
+  /// If [currentPage] is the last page, function will navigate to [LoginScreen].
   void switchToNextPage();
 
   /// Switch [currentPage] to last and animate [pageController].

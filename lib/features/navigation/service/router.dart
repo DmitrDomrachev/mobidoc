@@ -5,6 +5,8 @@ import 'package:mobidoc/features/dash/screen/dash_screen_export.dart';
 import 'package:mobidoc/features/debug/screens/debug_screen/debug_screen_export.dart';
 import 'package:mobidoc/features/debug/screens/log_history_screen/log_history_export.dart';
 import 'package:mobidoc/features/info/screen/info_screen_export.dart';
+import 'package:mobidoc/features/login/screen/login_screen_export.dart';
+import 'package:mobidoc/features/navigation/domain/entity/login/login_route.dart';
 import 'package:mobidoc/features/navigation/domain/entity/onboaring/onboarding_routes.dart';
 import 'package:mobidoc/features/onboarding/screen/onboarding_screen_export.dart';
 import 'package:mobidoc/features/temp/screens/temp_screen/temp_screen_export.dart';
@@ -28,6 +30,7 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes =>
       [
         onboardingRoute,
+        loginRoute,
       ];
 
   AppRouter._();

@@ -23,4 +23,8 @@ abstract class AppRoutePaths {
 
   /// Path to onboarding screen.
   static const String onboardingPath = '/onboardingPath';
+
+  /// Path to login screen.
+  static const String loginPath = '/loginPath';
+
 }
