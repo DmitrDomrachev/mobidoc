@@ -19,7 +19,8 @@ enum AppColors {
   pastelWhite(Color(0xFFFAFAFA)),
   solitude(Color(0xFFE5E8EB)),
   darkGrey(Color(0xFFA7A7A7)),
-  raisinBlack(Color(0xFF212121));
+  raisinBlack(Color(0xFF212121)),
+  dodgeBlue(Color(0xFF007AFE));
 
   final Color value;
 
