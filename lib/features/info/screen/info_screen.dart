@@ -17,6 +17,7 @@ class InfoScreen extends ElementaryWidget<IInfoScreenWidgetModel> {
 
   @override
   Widget build(IInfoScreenWidgetModel wm) {
+
     return ColoredBox(
       color: wm.colorScheme.background,
       child: const Center(

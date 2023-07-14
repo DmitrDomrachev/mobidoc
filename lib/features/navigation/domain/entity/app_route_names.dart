@@ -20,4 +20,7 @@ abstract class AppRouteNames {
 
   /// LogHistoryScreen route name.
   static const String logHistoryScreen = 'logHistoryRouter';
+
+  /// OnboardingScreen route name.
+  static const String onboardingScreen = 'onboardingRouter';
 }

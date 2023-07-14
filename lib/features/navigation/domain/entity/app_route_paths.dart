@@ -20,4 +20,7 @@ abstract class AppRoutePaths {
 
   /// Path to logs history screen.
   static const String logHistory = '/logHistory';
+
+  /// Path to onboarding screen.
+  static const String onboardingPath = '/onboardingPath';
 }

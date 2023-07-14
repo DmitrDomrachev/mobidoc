@@ -44,13 +44,13 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
 
   /// Base light theme of the app.
   AppColorScheme.light()
-      : primary = AppColors.cornflowerBlue.value,
+      : primary = AppColors.dodgeBlue.value,
         onPrimary = AppColors.white.value,
         secondary = AppColors.purple.value,
         onSecondary = AppColors.white.value,
         surface = AppColors.white.value,
         onSurface = AppColors.raisinBlack.value,
-        background = AppColors.solitude.value,
+        background = AppColors.white.value,
         onBackground = AppColors.raisinBlack.value,
         error = AppColors.freeSpeechRed.value,
         onError = AppColors.white.value,
