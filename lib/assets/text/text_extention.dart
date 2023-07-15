@@ -24,6 +24,9 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
   /// Text style 18_122_700.
   final TextStyle bold18;
 
+  /// Text style 22_131_700.
+  final TextStyle bold22;
+
   AppTextTheme._({
     required this.regular14,
     required this.regular16,
@@ -32,6 +35,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
     required this.bold14,
     required this.bold16,
     required this.bold18,
+    required this.bold22,
   });
 
   /// Base app text theme.
@@ -42,7 +46,8 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
         medium16 = AppTextStyle.medium16.value,
         bold14 = AppTextStyle.bold14.value,
         bold16 = AppTextStyle.bold16.value,
-        bold18 = AppTextStyle.bold18.value;
+        bold18 = AppTextStyle.bold18.value,
+        bold22 = AppTextStyle.bold22.value;
 
   @override
   ThemeExtension<AppTextTheme> lerp(
@@ -60,7 +65,8 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
       medium16: TextStyle.lerp(medium16, other.medium16, t),
       bold14: TextStyle.lerp(bold14, other.bold14, t),
       bold16: TextStyle.lerp(bold16, other.bold16, t),
-      bold22: TextStyle.lerp(bold18, other.bold18, t),
+      bold18: TextStyle.lerp(bold18, other.bold18, t),
+      bold22: TextStyle.lerp(bold22, other.bold22, t),
     );
   }
 
@@ -78,6 +84,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
     TextStyle? medium16,
     TextStyle? bold14,
     TextStyle? bold16,
+    TextStyle? bold18,
     TextStyle? bold22,
   }) {
     return AppTextTheme._(
@@ -87,7 +94,8 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
       medium16: medium16 ?? this.medium16,
       bold14: bold14 ?? this.bold14,
       bold16: bold16 ?? this.bold16,
-      bold18: bold22 ?? this.bold18,
+      bold18: bold18 ?? this.bold18,
+      bold22: bold22 ?? this.bold22,
     );
   }
 }

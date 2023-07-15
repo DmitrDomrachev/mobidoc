@@ -12,7 +12,8 @@ enum AppTextStyle {
 
   bold14(TextStyle(fontSize: 14, height: 1.40, fontWeight: FontWeight.w700)),
   bold16(TextStyle(fontSize: 16, height: 1.24, fontWeight: FontWeight.w700)),
-  bold18(TextStyle(fontSize: 18, height: 1.22, fontWeight: FontWeight.w700, fontFamily: 'OpenSans'));
+  bold18(TextStyle(fontSize: 18, height: 1.22, fontWeight: FontWeight.w700, fontFamily: 'OpenSans')),
+  bold22(TextStyle(fontSize: 22, height: 1.31, fontWeight: FontWeight.w700, fontFamily: 'OpenSans'));
 
   final TextStyle value;
 

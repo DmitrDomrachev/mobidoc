@@ -24,60 +24,56 @@ class OnboardingScreen extends ElementaryWidget<IOnboardingScreenWidgetModel> {
       listenableState: wm.currentPage,
       builder: (_, index) {
         return Scaffold(
-          body: SizedBox(
-            width: double.infinity,
-            child: SafeArea(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: [
-                    if (wm.isSkipButtonVisible)
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: _SkipButton(
-                          onPressed: wm.switchToLastPage,
-                        ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  if (wm.isSkipButtonVisible)
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: _SkipButton(
+                        onPressed: wm.switchToLastPage,
                       ),
-                    Column(
-                      children: [
-                        const SizedBox(
-                          height: 136,
-                        ),
-                        Expanded(
-                          child: PageView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            controller: wm.pageController,
-                            itemCount: wm.pageCount,
-                            itemBuilder: (_, pageNumber) {
-                              return _OnboardingPageWidget(
-                                assetName: wm
-                                    .onboardingDataList[pageNumber].imageAsset,
-                                title: wm.onboardingDataList[pageNumber].title,
-                                text: wm.onboardingDataList[pageNumber].body,
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        FullWidthElevatedButton(
-                          child: Text(
-                            wm.onboardingDataList[wm.currentPage.value ?? 0]
-                                .continueButtonText,
-                            style: wm.textScheme.bold18,
-                          ),
-                          onPressed: () {
-                            wm.switchToNextPage();
+                    ),
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 136,
+                      ),
+                      Expanded(
+                        child: PageView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller: wm.pageController,
+                          itemCount: wm.pageCount,
+                          itemBuilder: (_, pageNumber) {
+                            return _OnboardingPageWidget(
+                              assetName:
+                                  wm.onboardingDataList[pageNumber].imageAsset,
+                              title: wm.onboardingDataList[pageNumber].title,
+                              text: wm.onboardingDataList[pageNumber].body,
+                            );
                           },
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      FullWidthElevatedButton(
+                        child: Text(
+                          wm.onboardingDataList[wm.currentPage.value ?? 0]
+                              .continueButtonText,
+                          style: wm.textScheme.bold18,
+                        ),
+                        onPressed: () {
+                          wm.switchToNextPage();
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

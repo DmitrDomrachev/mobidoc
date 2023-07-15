@@ -5,7 +5,7 @@ class FullWidthElevatedButton extends StatelessWidget {
   /// Create an instanse [FullWidthElevatedButton].
   const FullWidthElevatedButton({
     required this.child,
-    required this.onPressed,
+    this.onPressed,
     super.key,
   });
 
@@ -13,7 +13,7 @@ class FullWidthElevatedButton extends StatelessWidget {
   final Widget child;
 
   /// Called when the button is pressed.
-  final Function() onPressed;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

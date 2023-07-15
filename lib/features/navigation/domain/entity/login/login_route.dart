@@ -4,4 +4,6 @@ import 'package:mobidoc/features/navigation/service/router.dart';
 
 /// Route for the onboarding feature.
 final loginRoute = AutoRoute(
-    page: LoginRouter.page, path: AppRoutePaths.loginPath,);
+  page: LoginRouter.page,
+  path: AppRoutePaths.loginPath,
+);
