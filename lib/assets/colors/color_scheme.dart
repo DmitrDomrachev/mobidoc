@@ -46,16 +46,16 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
   AppColorScheme.light()
       : primary = AppColors.dodgeBlue.value,
         onPrimary = AppColors.white.value,
-        secondary = AppColors.purple.value,
+        secondary = AppColors.dodgeBlue.value,
         onSecondary = AppColors.white.value,
-        surface = AppColors.white.value,
-        onSurface = AppColors.raisinBlack.value,
+        surface = AppColors.aliceBlue.value,
+        onSurface = AppColors.nero.value,
         background = AppColors.white.value,
-        onBackground = AppColors.raisinBlack.value,
-        error = AppColors.freeSpeechRed.value,
+        onBackground = AppColors.nero.value,
+        error = AppColors.razzmatazz.value,
         onError = AppColors.white.value,
-        selectedItem = AppColors.cornflowerBlue.value,
-        unselectedItem = AppColors.darkGrey.value;
+        selectedItem = AppColors.dodgeBlue.value,
+        unselectedItem = AppColors.titanWhite.value;
 
   /// Dark theme of the app.
   AppColorScheme.dark()

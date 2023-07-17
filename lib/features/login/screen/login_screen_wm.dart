@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobidoc/features/common/mixin/theme_mixin.dart';
 import 'package:mobidoc/features/login/model/user_login_model.dart';
-import 'package:mobidoc/features/login/screen/login_screen.dart';
+import 'package:mobidoc/features/login/screen/login_screen_widget.dart';
 import 'package:mobidoc/features/login/screen/login_screen_model.dart';
+import 'package:mobidoc/features/navigation/domain/entity/app_route_paths.dart';
 
 /// Factory for [LoginScreenWM].
 LoginScreenWM loginScreenWMFactory(BuildContext _) {
@@ -33,15 +35,21 @@ class LoginScreenWM extends WidgetModel<LoginScreen, LoginScreenModel>
   @override
   Future<void> login() async {
     _loginState.loading();
+
     try {
       final user = await _checkUserData(
         _loginController.value.text,
         _passwordController.value.text,
       );
       _loginState.content(user);
+      _navigateToHomeScreen(context);
     } catch (_) {
       _loginState.error();
     }
+  }
+
+  void _navigateToHomeScreen(BuildContext context) {
+    context.router.replaceNamed(AppRoutePaths.homePath);
   }
 
   Future<UserLoginModel> _checkUserData(String login, String password) async {
