@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 ///
 /// http://www.color-blindness.com/color-name-hue/.
 
-enum AppColors {
+ enum AppColors {
   cornflowerBlue(Color(0xFF5E9EED)),
   aliceBlue(Color(0xFFEAF4FE)),
   nero(Color(0xFF222222)),
   razzmatazz(Color(0xFFD40055)),
   titanWhite(Color(0xFFDAD7E0)),
+  lavenderBlue(Color(0xFFCAE6FC)),
+  manatee(Color(0xFF8C92A4)),
   lightCyan(Color(0xFFC9E9FF)),
   prussianBlue(Color(0xFF000F3D)),
   jaguar(Color(0xFF181719)),

@@ -46,31 +46,16 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
   AppColorScheme.light()
       : primary = AppColors.dodgeBlue.value,
         onPrimary = AppColors.white.value,
-        secondary = AppColors.dodgeBlue.value,
-        onSecondary = AppColors.white.value,
+        secondary = AppColors.lavenderBlue.value,
+        onSecondary = AppColors.dodgeBlue.value,
         surface = AppColors.aliceBlue.value,
-        onSurface = AppColors.nero.value,
+        onSurface = AppColors.manatee.value,
         background = AppColors.white.value,
         onBackground = AppColors.nero.value,
         error = AppColors.razzmatazz.value,
         onError = AppColors.white.value,
         selectedItem = AppColors.dodgeBlue.value,
         unselectedItem = AppColors.titanWhite.value;
-
-  /// Dark theme of the app.
-  AppColorScheme.dark()
-      : primary = AppColors.prussianBlue.value,
-        onPrimary = AppColors.darkGrey.value,
-        secondary = AppColors.oxfordBlue.value,
-        onSecondary = AppColors.darkGrey.value,
-        surface = AppColors.oxfordBlue.value,
-        onSurface = AppColors.darkGrey.value,
-        background = AppColors.jaguar.value,
-        onBackground = AppColors.darkGrey.value,
-        error = AppColors.freeSpeechRed.value,
-        onError = AppColors.darkGrey.value,
-        selectedItem = AppColors.horizon.value,
-        unselectedItem = AppColors.darkGrey.value;
 
   const AppColorScheme._({
     required this.primary,
@@ -111,7 +96,8 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
 
   /// Return color scheme for app from context.
   static AppColorScheme of(BuildContext context) =>
-      Theme.of(context).extension<AppColorScheme>() ?? _throwThemeExceptionFromFunc(context);
+      Theme.of(context).extension<AppColorScheme>() ??
+      _throwThemeExceptionFromFunc(context);
 
   /// @nodoc.
   ThemeExtension<AppColorScheme> copyWith({

@@ -3,8 +3,8 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobidoc/features/common/mixin/theme_mixin.dart';
 import 'package:mobidoc/features/login/model/user_login_model.dart';
-import 'package:mobidoc/features/login/screen/login_screen_widget.dart';
 import 'package:mobidoc/features/login/screen/login_screen_model.dart';
+import 'package:mobidoc/features/login/screen/login_screen_widget.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_paths.dart';
 
 /// Factory for [LoginScreenWM].
