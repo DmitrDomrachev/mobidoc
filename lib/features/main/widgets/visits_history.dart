@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
 import 'package:mobidoc/features/common/widgets/base_widgets/visit_card.dart';
+import 'package:mobidoc/features/main/screen/main_screen.dart';
 
+/// Widget with the history of visits for [MainScreen].
 class VisitsHistory extends StatelessWidget {
+  /// Create an instance [VisitsHistory].
   const VisitsHistory({super.key});
 
   @override
