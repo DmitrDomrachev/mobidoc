@@ -1,17 +1,59 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/filled_card.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
+import 'package:mobidoc/features/services/screen/services_screen_wm.dart';
 
-/// Main widget for [ServicesScreen] module.
+/// Main widget for ServicesScreen module
 @RoutePage(name: AppRouteNames.servicesScreen)
-class ServicesScreen extends StatelessWidget {
-  /// Create an instance [ServicesScreen].
-  const ServicesScreen({super.key});
+class ServicesScreenWidget
+    extends ElementaryWidget<IServicesScreenWidgetModel> {
+  const ServicesScreenWidget({
+    Key? key,
+    WidgetModelFactory wmFactory = defaultServicesScreenWidgetModelFactory,
+  }) : super(wmFactory, key: key);
+
+  @override
+  Widget build(IServicesScreenWidgetModel wm) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView(
+        children: [
+          Text(
+            'Услуги',
+            style: wm.textScheme.bold30,
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          const _ServicesList(),
+        ],
+      ),
+    );
+  }
+}
+
+class _ServicesList extends StatelessWidget {
+  const _ServicesList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Services screen'),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ...List.generate(
+          10,
+          (index) => Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: FilledCard(
+              title: 'Консультация',
+              subtitle: 'Первичная консультация',
+              onPressed: () {},
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

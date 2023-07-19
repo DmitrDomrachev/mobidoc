@@ -14,7 +14,7 @@ import 'package:mobidoc/features/navigation/domain/entity/home/home_route.dart';
 import 'package:mobidoc/features/navigation/domain/entity/login/login_route.dart';
 import 'package:mobidoc/features/navigation/domain/entity/onboaring/onboarding_routes.dart';
 import 'package:mobidoc/features/onboarding/screen/onboarding_screen_export.dart';
-import 'package:mobidoc/features/services/screen/services_screen.dart';
+import 'package:mobidoc/features/services/screen/services_export.dart';
 import 'package:mobidoc/features/temp/screens/temp_screen/temp_screen_export.dart';
 
 part 'app_router.gr.dart';

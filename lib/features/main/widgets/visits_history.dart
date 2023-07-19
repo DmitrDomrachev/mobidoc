@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
-import 'package:mobidoc/features/common/widgets/base_widgets/visit_card.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/filled_card.dart';
 import 'package:mobidoc/features/main/screen/main_screen.dart';
 
 /// Widget with the history of visits for [MainScreen].
@@ -27,9 +27,9 @@ class VisitsHistory extends StatelessWidget {
             6,
             (index) => Padding(
               padding: EdgeInsets.only(bottom: 16),
-              child: VisitCard(
-                doctorType: 'Терапевт',
-                date: '$index сентября 2020',
+              child: FilledCard(
+                title: 'Терапевт',
+                subtitle: '$index сентября 2020',
                 onPressed: () {},
               ),
             ),
