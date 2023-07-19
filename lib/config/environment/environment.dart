@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:logger/logger.dart';
 import 'package:mobidoc/config/app_config.dart';
 import 'package:mobidoc/config/environment/build_types.dart';
 import 'package:mobidoc/features/common/service/log_history/log_history_service_impl.dart';
 import 'package:mobidoc/persistence/storage/config_storage/config_storage.dart';
 import 'package:mobidoc/util/log_history.dart';
-import 'package:logger/logger.dart';
 import 'package:surf_logger/surf_logger.dart' as surf;
 
 /// Environment configuration.

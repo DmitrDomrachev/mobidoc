@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
+import 'package:mobidoc/features/main/screen/main_screen.dart';
 import 'package:mobidoc/features/main/widgets/setting_button.dart';
 
+/// Header widget for [MainScreen].
 class MainHeader extends StatelessWidget {
+  /// Create an instance [MainHeader].
   const MainHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = AppColorScheme.of(context);
     return Stack(
       children: [
         Container(
           width: double.infinity,
           height: 210,
-          decoration: const ShapeDecoration(
+          decoration: ShapeDecoration(
             gradient: LinearGradient(
-              begin: Alignment(-0.95, -0.3),
-              end: Alignment(0.95, 0.3),
-              colors: [Color(0xFF007AFE), Color(0xFF6D94FB)],
+              begin: const Alignment(-0.95, -0.3),
+              end: const Alignment(0.95, 0.3),
+              colors: [
+                colorScheme.gradientStart,
+                colorScheme.gradientEnd,
+              ],
             ),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(40)),
             ),
           ),
@@ -28,8 +36,9 @@ class MainHeader extends StatelessWidget {
           left: 16,
           child: Text(
             'Кирилл Пояснялов',
-            style:
-                AppTextTheme.of(context).bold24.copyWith(color: Colors.white),
+            style: AppTextTheme.of(context)
+                .bold24
+                .copyWith(color: colorScheme.background),
           ),
         ),
         Positioned(
@@ -39,17 +48,17 @@ class MainHeader extends StatelessWidget {
             alignment: AlignmentDirectional.center,
             children: [
               Container(
-                decoration: const ShapeDecoration(
+                decoration: ShapeDecoration(
                   shape: OvalBorder(
                     side: BorderSide(
                       width: 35,
-                      color: Color(0x4dffffff),
+                      color: colorScheme.background.withAlpha(40),
                     ),
                   ),
                 ),
               ),
               CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: colorScheme.background,
                 child: Padding(
                   padding: const EdgeInsets.all(2.5),
                   child: ClipOval(

@@ -42,12 +42,18 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
   /// Color for show unselected items.
   final Color unselectedItem;
 
+  final Color gradientStart;
+
+  final Color gradientEnd;
+
+  final Color lineColor;
+
   /// Base light theme of the app.
   AppColorScheme.light()
       : primary = AppColors.dodgeBlue.value,
         onPrimary = AppColors.white.value,
         secondary = AppColors.lavenderBlue.value,
-        onSecondary = AppColors.dodgeBlue.value,
+        onSecondary = AppColors.dodgerBlue.value,
         surface = AppColors.aliceBlue.value,
         onSurface = AppColors.manatee.value,
         background = AppColors.white.value,
@@ -55,7 +61,10 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
         error = AppColors.razzmatazz.value,
         onError = AppColors.white.value,
         selectedItem = AppColors.dodgeBlue.value,
-        unselectedItem = AppColors.titanWhite.value;
+        unselectedItem = AppColors.titanWhite.value,
+        gradientStart = AppColors.dodgeBlue.value,
+        gradientEnd = AppColors.mayaBlue.value,
+        lineColor = AppColors.darkGrey.value;
 
   const AppColorScheme._({
     required this.primary,
@@ -70,6 +79,9 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
     required this.onError,
     required this.selectedItem,
     required this.unselectedItem,
+    required this.gradientStart,
+    required this.gradientEnd,
+    required this.lineColor,
   });
 
   @override
@@ -91,6 +103,9 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
       onError: Color.lerp(onError, other.onError, t),
       selectedItem: Color.lerp(selectedItem, other.selectedItem, t),
       unselectedItem: Color.lerp(unselectedItem, other.unselectedItem, t),
+      gradientStart: Color.lerp(gradientStart, other.gradientStart, t),
+      gradientEnd: Color.lerp(gradientEnd, other.gradientEnd, t),
+      lineColor: Color.lerp(lineColor, other.lineColor, t),
     );
   }
 
@@ -113,6 +128,9 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
     Color? onError,
     Color? selectedItem,
     Color? unselectedItem,
+    Color? gradientStart,
+    Color? gradientEnd,
+    Color? lineColor,
   }) {
     return AppColorScheme._(
       primary: primary ?? this.primary,
@@ -127,6 +145,9 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
       onError: onError ?? this.onError,
       selectedItem: selectedItem ?? this.selectedItem,
       unselectedItem: unselectedItem ?? this.unselectedItem,
+      gradientStart: gradientStart ?? this.gradientStart,
+      gradientEnd: gradientEnd ?? this.gradientEnd,
+      lineColor: lineColor ?? this.lineColor,
     );
   }
 }

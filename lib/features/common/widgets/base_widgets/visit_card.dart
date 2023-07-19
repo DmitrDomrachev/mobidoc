@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
 
+/// Visit card widget.
 class VisitCard extends StatelessWidget {
+  /// Create an instance [VisitCard].
   const VisitCard({
     required this.doctorType,
     required this.date,
@@ -62,9 +64,8 @@ class VisitCard extends StatelessWidget {
                   color: colorScheme.onSecondary,
                   onPressed: onPressed,
                   iconSize: 24,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.list_rounded,
-                    color: colorScheme.onSecondary,
                   ),
                 ),
               ),

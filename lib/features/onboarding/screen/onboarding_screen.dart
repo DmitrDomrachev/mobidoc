@@ -3,7 +3,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
-import 'package:mobidoc/features/common/widgets/base_widgets/full_width_elevated_button.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_button.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 import 'package:mobidoc/features/onboarding/screen/onboarding_screen_export.dart';
 
@@ -61,7 +61,7 @@ class OnboardingScreen extends ElementaryWidget<IOnboardingScreenWidgetModel> {
                       const SizedBox(
                         height: 30,
                       ),
-                      FullWidthElevatedButton(
+                      FullWidthFilledButton(
                         child: Text(
                           wm.onboardingDataList[wm.currentPage.value ?? 0]
                               .continueButtonText,

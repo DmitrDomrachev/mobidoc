@@ -6,7 +6,7 @@ import 'package:mobidoc/config/environment/environment.dart';
 import 'package:mobidoc/features/app/di/app_scope.dart';
 import 'package:mobidoc/features/common/mixin/theme_mixin.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_paths.dart';
-import 'package:mobidoc/features/navigation/service/router.dart';
+import 'package:mobidoc/features/navigation/service/app_router.dart';
 import 'package:mobidoc/features/temp/screens/temp_screen/temp_screen.dart';
 import 'package:mobidoc/features/temp/screens/temp_screen/temp_screen_model.dart';
 import 'package:provider/provider.dart';

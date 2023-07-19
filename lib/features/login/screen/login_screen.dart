@@ -5,7 +5,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
-import 'package:mobidoc/features/common/widgets/base_widgets/full_width_elevated_button.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_button.dart';
 import 'package:mobidoc/features/login/model/user_login_model.dart';
 import 'package:mobidoc/features/login/screen/login_screen_wm.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
@@ -55,7 +55,7 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        FullWidthElevatedButton(
+                        FullWidthFilledButton(
                           child: Text(
                             'Войти',
                             style: wm.textScheme.medium16,
@@ -78,7 +78,7 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text('Неверный логин/пароль'),
-                        FullWidthElevatedButton(
+                        FullWidthFilledButton(
                           child: Text(
                             'Войти',
                             style: wm.textScheme.medium16,
@@ -198,7 +198,7 @@ class _LoadingButtonState extends State<_LoadingButton>
 
   @override
   Widget build(BuildContext context) {
-    return FullWidthElevatedButton(
+    return FullWidthFilledButton(
       child: CustomPaint(
         painter:
             _WavePainter(animation.value, AppColorScheme.of(context).primary),

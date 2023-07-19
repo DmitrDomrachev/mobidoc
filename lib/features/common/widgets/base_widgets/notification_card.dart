@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
 
+/// Notification card widget.
 class NotificationCard extends StatelessWidget {
+  /// Create an instance [NotificationCard].
   const NotificationCard({
     required this.doctorType,
     required this.selfAssessment,
@@ -19,7 +21,7 @@ class NotificationCard extends StatelessWidget {
     final textTheme = AppTextTheme.of(context);
     final colorScheme = AppColorScheme.of(context);
 
-    return Container(
+    return DecoratedBox(
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -76,13 +78,14 @@ class _NotificationInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = AppTextTheme.of(context);
+    final colorScheme = AppColorScheme.of(context);
 
     return Row(
       children: [
         Container(
-          color: Colors.grey,
+          color: colorScheme.lineColor,
           height: 30,
-          width: 5,
+          width: 2,
         ),
         const SizedBox(
           width: 15,

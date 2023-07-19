@@ -6,7 +6,7 @@ import 'package:mobidoc/features/info/screen/info_screen_model.dart';
 
 /// Factory for [InfoScreenWidgetModel].
 InfoScreenWidgetModel infoScreenWmFactory(
-  BuildContext context,
+  BuildContext _,
 ) {
   final model = InfoScreenModel();
   return InfoScreenWidgetModel(model);

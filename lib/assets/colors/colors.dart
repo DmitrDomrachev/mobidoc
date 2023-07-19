@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 ///
 /// http://www.color-blindness.com/color-name-hue/.
 
- enum AppColors {
+enum AppColors {
   cornflowerBlue(Color(0xFF5E9EED)),
   aliceBlue(Color(0xFFEAF4FE)),
   nero(Color(0xFF222222)),
@@ -26,7 +26,9 @@ import 'package:flutter/material.dart';
   solitude(Color(0xFFE5E8EB)),
   darkGrey(Color(0xFFA7A7A7)),
   raisinBlack(Color(0xFF212121)),
-  dodgeBlue(Color(0xFF007AFE));
+  dodgeBlue(Color(0xFF007AFE)),
+  dodgerBlue(Color(0xFF37C6F7)),
+  mayaBlue(Color(0xFF6D94FB));
 
   final Color value;
 

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
+import 'package:mobidoc/features/main/widgets/main_header.dart';
 
+/// Stetting button for [MainHeader].
 class SettingButton extends StatelessWidget {
+  /// Create an instance [SettingButton].
   const SettingButton({super.key, this.onPressed});
 
+  /// Called when the button is pressed.
   final Function()? onPressed;
 
   @override

@@ -6,7 +6,7 @@ import 'package:mobidoc/config/app_config.dart';
 import 'package:mobidoc/config/environment/environment.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service_impl.dart';
-import 'package:mobidoc/features/navigation/service/router.dart';
+import 'package:mobidoc/features/navigation/service/app_router.dart';
 import 'package:mobidoc/persistence/storage/theme_storage/theme_storage.dart';
 import 'package:mobidoc/persistence/storage/theme_storage/theme_storage_impl.dart';
 import 'package:mobidoc/util/default_error_handler.dart';

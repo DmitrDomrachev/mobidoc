@@ -4,7 +4,7 @@ import 'package:mobidoc/features/navigation/domain/entity/card/card_route.dart';
 import 'package:mobidoc/features/navigation/domain/entity/chat/chat_screen.dart';
 import 'package:mobidoc/features/navigation/domain/entity/main/main_route.dart';
 import 'package:mobidoc/features/navigation/domain/entity/services/services_route.dart';
-import 'package:mobidoc/features/navigation/service/router.dart';
+import 'package:mobidoc/features/navigation/service/app_router.dart';
 
 /// All routes for the home feature.
 final homeRoute = AutoRoute(
