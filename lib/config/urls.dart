@@ -4,10 +4,10 @@ import 'package:mobidoc/config/environment/environment.dart';
 /// Server urls.
 abstract class Url {
   /// TRest url.
-  static String get testUrl => 'http://uinames.com/api/';
+  static String get testUrl => 'http://mobidoc.roketstorm.com/api/';
 
   /// Prod url.
-  static String get prodUrl => 'https://prod.surfstudio.ru/api';
+  static String get prodUrl => 'http://mobidoc.roketstorm.com/api/';
 
   /// Dev url.
   static String get devUrl => 'https://localhost:9999/food/hs/ExchangeSotr';

@@ -2,11 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidoc/api/service/api_client.dart';
 import 'package:mobidoc/config/app_config.dart';
 import 'package:mobidoc/config/environment/environment.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service_impl.dart';
+import 'package:mobidoc/features/doctors/domain/repository/doctor_repository.dart';
+import 'package:mobidoc/features/doctors/domain/repository/doctor_repository_impl.dart';
 import 'package:mobidoc/features/navigation/service/app_router.dart';
+import 'package:mobidoc/features/services/domain/repository/service_repository.dart';
+import 'package:mobidoc/features/services/domain/repository/service_repository_impl.dart';
 import 'package:mobidoc/persistence/storage/theme_storage/theme_storage.dart';
 import 'package:mobidoc/persistence/storage/theme_storage/theme_storage_impl.dart';
 import 'package:mobidoc/util/default_error_handler.dart';
@@ -16,15 +21,15 @@ class AppScope implements IAppScope {
   static const _themeByDefault = ThemeMode.system;
 
   late final Dio _dio;
+  late final ApiClient _apiClient;
+  late final DoctorRepository _doctorRepository;
+  late final ServiceRepository _serviceRepository;
   late final ErrorHandler _errorHandler;
   late final AppRouter _router;
   late final IThemeService _themeService;
 
   @override
   late VoidCallback applicationRebuilder;
-
-  @override
-  Dio get dio => _dio;
 
   @override
   ErrorHandler get errorHandler => _errorHandler;
@@ -35,6 +40,12 @@ class AppScope implements IAppScope {
   @override
   IThemeService get themeService => _themeService;
 
+  @override
+  DoctorRepository get doctorRepository => _doctorRepository;
+
+  @override
+  ServiceRepository get serviceRepository => _serviceRepository;
+
   late IThemeModeStorage _themeModeStorage;
 
   /// Create an instance [AppScope].
@@ -43,6 +54,9 @@ class AppScope implements IAppScope {
     final additionalInterceptors = <Interceptor>[];
 
     _dio = _initDio(additionalInterceptors);
+    _apiClient = ApiClient(_dio);
+    _doctorRepository = DoctorRepositoryImpl(_apiClient);
+    _serviceRepository = ServiceRepositoryImpl(_apiClient);
     _errorHandler = DefaultErrorHandler();
     _router = AppRouter.instance();
     _themeModeStorage = ThemeModeStorageImpl();
@@ -50,7 +64,8 @@ class AppScope implements IAppScope {
 
   @override
   Future<void> initTheme() async {
-    final theme = await ThemeModeStorageImpl().getThemeMode() ?? _themeByDefault;
+    final theme =
+        await ThemeModeStorageImpl().getThemeMode() ?? _themeByDefault;
     _themeService = ThemeServiceImpl(theme);
     _themeService.addListener(_onThemeModeChanged);
   }
@@ -64,9 +79,11 @@ class AppScope implements IAppScope {
       ..baseUrl = Environment<AppConfig>.instance().config.url
       ..connectTimeout = timeout
       ..receiveTimeout = timeout
-      ..sendTimeout = timeout;
+      ..sendTimeout = timeout
+      ..headers = <String, dynamic>{'Accept': 'application/json'};
 
-    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = (client) {
+    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
+        (client) {
       final proxyUrl = Environment<AppConfig>.instance().config.proxyUrl;
       if (proxyUrl != null && proxyUrl.isNotEmpty) {
         client
@@ -84,7 +101,8 @@ class AppScope implements IAppScope {
     dio.interceptors.addAll(additionalInterceptors);
 
     if (Environment<AppConfig>.instance().isDebug) {
-      dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+      dio.interceptors
+          .add(LogInterceptor(requestBody: true, responseBody: true));
     }
 
     return dio;
@@ -97,8 +115,9 @@ class AppScope implements IAppScope {
 
 /// App dependencies.
 abstract class IAppScope {
-  /// Http client.
-  Dio get dio;
+  DoctorRepository get doctorRepository;
+
+  ServiceRepository get serviceRepository;
 
   /// Interface for handle error in business logic.
   ErrorHandler get errorHandler;

@@ -4,11 +4,16 @@ import 'package:mobidoc/assets/text/text_extention.dart';
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard(
-      {super.key, required this.name, required this.type, required this.info});
+      {super.key,
+      required this.name,
+      required this.type,
+      required this.info,
+      this.photo});
 
   final String name;
   final String type;
   final String info;
+  final String? photo;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,8 @@ class DoctorCard extends StatelessWidget {
               children: [
                 ClipOval(
                   child: Image.network(
-                    'https://www.photopills.com/sites/default/files/photopillers/benito-gaztelugatxe.jpg',
+                    photo ??
+                        'https://www.photopills.com/sites/default/files/photopillers/benito-gaztelugatxe.jpg',
                     width: 30,
                     height: 30,
                     fit: BoxFit.cover,
