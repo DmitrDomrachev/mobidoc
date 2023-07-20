@@ -10,6 +10,12 @@ enum AppTextStyle {
     fontWeight: FontWeight.w400,
     fontFamily: 'OpenSans',
   )),
+  regular14(TextStyle(
+    fontSize: 14,
+    height: 1.2,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'OpenSans',
+  )),
   regular16(TextStyle(
     fontSize: 16,
     height: 1.24,

@@ -37,7 +37,7 @@ abstract class AppRoutePaths {
   static const String cardPath = 'cardPath';
 
   /// Path to chat screen.
-  static const String chatPath = 'chatPath';
+  static const String doctorsPath = 'doctorsPath';
 
   /// Path to main screen.
   static const String mainPath = 'mainPath';
