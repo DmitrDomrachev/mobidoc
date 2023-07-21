@@ -43,7 +43,7 @@ class LogHistoryWm extends WidgetModel<LogHistoryScreen, LogHistoryModel>
 
 /// Factory for [LogHistoryWm].
 LogHistoryWm logHistoryScreenWmFactory(
-  BuildContext context,
+  BuildContext _,
 ) {
   final model = LogHistoryModel();
   return LogHistoryWm(model);

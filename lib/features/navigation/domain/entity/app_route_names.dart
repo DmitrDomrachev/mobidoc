@@ -23,4 +23,22 @@ abstract class AppRouteNames {
 
   /// OnboardingScreen route name.
   static const String onboardingScreen = 'onboardingRouter';
+
+  /// LoginScreen route name.
+  static const String loginScreen = 'loginRouter';
+
+  /// HomeScreen route name.
+  static const String homeScreen = 'homeRouter';
+
+  /// HomeScreen route name.
+  static const String servicesScreen = 'servicesRouter';
+
+  /// HomeScreen route name.
+  static const String cardScreen = 'cardRouter';
+
+  /// HomeScreen route name.
+  static const String chatScreen = 'chatRouter';
+
+  /// MainScreen route name.
+  static const String mainScreen = 'mainRouter';
 }

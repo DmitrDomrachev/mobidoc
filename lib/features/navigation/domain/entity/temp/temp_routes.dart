@@ -3,7 +3,7 @@ import 'package:mobidoc/features/navigation/domain/entity/app_route_paths.dart';
 import 'package:mobidoc/features/navigation/domain/entity/dash/dash_routes.dart';
 import 'package:mobidoc/features/navigation/domain/entity/debug/debug_routes.dart';
 import 'package:mobidoc/features/navigation/domain/entity/info/info_routes.dart';
-import 'package:mobidoc/features/navigation/service/router.dart';
+import 'package:mobidoc/features/navigation/service/app_router.dart';
 
 /// All routes for the temp feature.
 final tempRoutes = AutoRoute(

@@ -6,7 +6,7 @@ import 'package:mobidoc/features/dash/screen/dash_screen_model.dart';
 
 /// Factory for [DashScreenWidgetModel].
 DashScreenWidgetModel dashScreenWmFactory(
-  BuildContext context,
+  BuildContext _,
 ) {
   final model = DashScreenModel();
   return DashScreenWidgetModel(model);

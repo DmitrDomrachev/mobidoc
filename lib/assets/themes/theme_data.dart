@@ -24,27 +24,8 @@ abstract class AppThemeData {
     extensions: [_lightColorScheme, _textTheme],
   );
 
-  /// Dark theme configuration.
-  static final ThemeData darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    colorScheme: ColorScheme(
-      brightness: Brightness.dark,
-      primary: _darkColorScheme.primary,
-      onPrimary: _darkColorScheme.onPrimary,
-      secondary: _darkColorScheme.secondary,
-      onSecondary: _darkColorScheme.onSecondary,
-      error: _darkColorScheme.error,
-      onError: _darkColorScheme.onError,
-      background: _darkColorScheme.background,
-      onBackground: _darkColorScheme.onBackground,
-      surface: _darkColorScheme.surface,
-      onSurface: _darkColorScheme.onSurface,
-    ),
-    scaffoldBackgroundColor: _darkColorScheme.background,
-    extensions: [_darkColorScheme, _textTheme],
-  );
+
 
   static final _lightColorScheme = AppColorScheme.light();
-  static final _darkColorScheme = AppColorScheme.dark();
   static final _textTheme = AppTextTheme.base();
 }

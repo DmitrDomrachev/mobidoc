@@ -57,6 +57,7 @@ class _AppState extends State<App> {
         animation: _themeService,
         builder: (context, child) {
           return MaterialApp.router(
+
             theme: AppThemeData.lightTheme,
             // darkTheme: AppThemeData.darkTheme,
             // themeMode: _themeService.currentThemeMode,

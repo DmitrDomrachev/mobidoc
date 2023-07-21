@@ -23,4 +23,23 @@ abstract class AppRoutePaths {
 
   /// Path to onboarding screen.
   static const String onboardingPath = '/onboardingPath';
+
+  /// Path to login screen.
+  static const String loginPath = '/loginPath';
+
+  /// Path to home screen.
+  static const String homePath = '/homePath';
+
+  /// Path to services screen.
+  static const String servicesPath = 'servicesPath';
+
+  /// Path to card screen.
+  static const String cardPath = 'cardPath';
+
+  /// Path to chat screen.
+  static const String chatPath = 'chatPath';
+
+  /// Path to main screen.
+  static const String mainPath = 'mainPath';
+
 }

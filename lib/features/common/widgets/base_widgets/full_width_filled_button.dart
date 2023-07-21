@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-/// A Material Design "Elevated Button" with full-width size and zero initial elevation.
-class FullWidthElevatedButton extends StatelessWidget {
-  /// Create an instanse [FullWidthElevatedButton].
-  const FullWidthElevatedButton({
+/// A Material Design "Filled Button" with full-width size.
+class FullWidthFilledButton extends StatelessWidget {
+  /// Create an instance [FullWidthFilledButton].
+  const FullWidthFilledButton({
     required this.child,
-    required this.onPressed,
+    this.onPressed,
     super.key,
   });
 
@@ -13,13 +13,12 @@ class FullWidthElevatedButton extends StatelessWidget {
   final Widget child;
 
   /// Called when the button is pressed.
-  final Function() onPressed;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        elevation: 0,
+    return FilledButton(
+      style: FilledButton.styleFrom(
         minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       ),

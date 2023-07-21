@@ -8,6 +8,12 @@ import 'package:flutter/material.dart';
 
 enum AppColors {
   cornflowerBlue(Color(0xFF5E9EED)),
+  aliceBlue(Color(0xFFEAF4FE)),
+  nero(Color(0xFF222222)),
+  razzmatazz(Color(0xFFD40055)),
+  titanWhite(Color(0xFFDAD7E0)),
+  lavenderBlue(Color(0xFFCAE6FC)),
+  manatee(Color(0xFF8C92A4)),
   lightCyan(Color(0xFFC9E9FF)),
   prussianBlue(Color(0xFF000F3D)),
   jaguar(Color(0xFF181719)),
@@ -20,7 +26,9 @@ enum AppColors {
   solitude(Color(0xFFE5E8EB)),
   darkGrey(Color(0xFFA7A7A7)),
   raisinBlack(Color(0xFF212121)),
-  dodgeBlue(Color(0xFF007AFE));
+  dodgeBlue(Color(0xFF007AFE)),
+  dodgerBlue(Color(0xFF37C6F7)),
+  mayaBlue(Color(0xFF6D94FB));
 
   final Color value;
 
