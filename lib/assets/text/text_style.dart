@@ -69,7 +69,13 @@ enum AppTextStyle {
     height: 1.36,
     fontWeight: FontWeight.w700,
     fontFamily: 'OpenSans',
-  ));
+  )),
+  bold30(TextStyle(
+  fontSize: 30,
+  height: 1.36,
+  fontWeight: FontWeight.w700,
+  fontFamily: 'OpenSans',
+));
 
   final TextStyle value;
 

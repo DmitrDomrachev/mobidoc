@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
 
-/// Visit card widget.
-class VisitCard extends StatelessWidget {
-  /// Create an instance [VisitCard].
-  const VisitCard({
-    required this.doctorType,
-    required this.date,
+/// Filled card widget.
+class FilledCard extends StatelessWidget {
+  /// Create an instance [FilledCard].
+  const FilledCard({
+    required this.title,
+    required this.subtitle,
     required this.onPressed,
     super.key,
   });
 
-  final String doctorType;
-  final String date;
+  final String title;
+  final String subtitle;
   final Function() onPressed;
 
   @override
@@ -42,14 +42,14 @@ class VisitCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    doctorType,
+                    title,
                     style: textTheme.bold18,
                   ),
                   const SizedBox(
                     height: 2,
                   ),
                   Text(
-                    date,
+                    subtitle,
                     style: textTheme.medium14
                         .copyWith(color: colorScheme.onSurface),
                   ),
