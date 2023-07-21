@@ -1,5 +1,6 @@
+import 'package:mobidoc/api/data/result.dart';
 import 'package:mobidoc/api/data/service/service.dart';
 
 abstract interface class ServiceRepository {
-  Future<List<Service>> getServices();
+  Future<Result<List<Service>>> getServices();
 }

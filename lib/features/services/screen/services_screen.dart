@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidoc/api/data/result.dart';
 import 'package:mobidoc/api/data/service/service.dart';
 import 'package:mobidoc/features/common/widgets/base_widgets/filled_card.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_button.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 import 'package:mobidoc/features/services/screen/services_screen_wm.dart';
 
@@ -30,8 +32,24 @@ class ServicesScreenWidget
           ),
           StateNotifierBuilder(
             listenableState: wm.services,
-            builder: (_, services) =>
-                _ServicesList(services: services as List<Service>),
+            builder: (_, services) {
+              final data = services as Result<List<Service>>;
+              return switch (data) {
+                Loading() => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                Success() => _ServicesList(
+                    services: data.value,
+                  ),
+                Error() =>
+                    FullWidthFilledButton(
+                    child: const Text('Перезагрузить'),
+                    onPressed: () {
+                      wm.loadServices();
+                    },
+                  ),
+              };
+            },
           ),
         ],
       ),

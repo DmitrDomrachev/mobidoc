@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidoc/api/errors/request_exception.dart';
 import 'package:mobidoc/api/service/api_client.dart';
 import 'package:mobidoc/config/app_config.dart';
 import 'package:mobidoc/config/environment/environment.dart';
@@ -51,7 +54,21 @@ class AppScope implements IAppScope {
   /// Create an instance [AppScope].
   AppScope() {
     /// List interceptor. Fill in as needed.
-    final additionalInterceptors = <Interceptor>[];
+    final additionalInterceptors = <Interceptor>[
+      InterceptorsWrapper(
+        onError: (e, handler) {
+          if (e.error is SocketException) {
+            return handler.reject(RequestException('No internet: ${e.message}',
+                requestOptions: e.requestOptions));
+          }
+          if (e.type == DioErrorType.badResponse) {
+            return handler.reject(RequestException('HTTP error: ${e.message}',
+                requestOptions: e.requestOptions));
+          }
+          return handler.next(e);
+        },
+      ),
+    ];
 
     _dio = _initDio(additionalInterceptors);
     _apiClient = ApiClient(_dio);
