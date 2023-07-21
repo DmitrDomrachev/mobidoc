@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidoc/api/data/service/service.dart';
 import 'package:mobidoc/features/common/widgets/base_widgets/filled_card.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 import 'package:mobidoc/features/services/screen/services_screen_wm.dart';
@@ -27,7 +28,11 @@ class ServicesScreenWidget
           const SizedBox(
             height: 16,
           ),
-          const _ServicesList(),
+          StateNotifierBuilder(
+            listenableState: wm.services,
+            builder: (_, services) =>
+                _ServicesList(services: services as List<Service>),
+          ),
         ],
       ),
     );
@@ -35,24 +40,23 @@ class ServicesScreenWidget
 }
 
 class _ServicesList extends StatelessWidget {
-  const _ServicesList({super.key});
+  const _ServicesList({required this.services});
+
+  final List<Service> services;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ...List.generate(
-          10,
-          (index) => Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: FilledCard(
-              title: 'Консультация',
-              subtitle: 'Первичная консультация',
-              onPressed: () {},
-            ),
-          ),
-        ),
+        ...services.map((e) => Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: FilledCard(
+                title: e.title,
+                subtitle: e.description,
+                onPressed: () {},
+              ),
+            )),
       ],
     );
   }

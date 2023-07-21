@@ -8,20 +8,19 @@ class FilledCard extends StatelessWidget {
   const FilledCard({
     required this.title,
     required this.subtitle,
-    required this.onPressed,
+    this.onPressed,
     super.key,
   });
 
   final String title;
   final String subtitle;
-  final Function() onPressed;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = AppColorScheme.of(context);
     final textTheme = AppTextTheme.of(context);
     return SizedBox(
-      height: 80,
       child: Material(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(100),
@@ -32,28 +31,32 @@ class FilledCard extends StatelessWidget {
             top: 15,
             bottom: 15,
           ),
-          height: 80,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: textTheme.bold18,
-                  ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  Text(
-                    subtitle,
-                    style: textTheme.medium14
-                        .copyWith(color: colorScheme.onSurface),
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.bold18,
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    Text(
+                      subtitle,
+                      style: textTheme.medium14
+                          .copyWith(color: colorScheme.onSurface),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 16,
               ),
               Ink(
                 decoration: ShapeDecoration(

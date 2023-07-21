@@ -37,7 +37,7 @@ abstract class AppRouteNames {
   static const String cardScreen = 'cardRouter';
 
   /// HomeScreen route name.
-  static const String chatScreen = 'chatRouter';
+  static const String doctorsScreen = 'doctorsRouter';
 
   /// MainScreen route name.
   static const String mainScreen = 'mainRouter';
