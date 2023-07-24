@@ -51,11 +51,13 @@ class FilledCard extends StatelessWidget {
                       subtitle,
                       style: textTheme.medium14
                           .copyWith(color: colorScheme.onSurface),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
               Ink(

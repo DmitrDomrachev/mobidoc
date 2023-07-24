@@ -18,38 +18,40 @@ class DoctorsScreenWidget extends ElementaryWidget<IDoctorsScreenWidgetModel> {
 
   @override
   Widget build(IDoctorsScreenWidgetModel wm) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView(
-        children: [
-          Text(
-            'Наши врачи',
-            style: wm.textScheme.bold30,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          StateNotifierBuilder(
-            listenableState: wm.doctors,
-            builder: (_, doctors) {
-              final data = doctors as Result<List<Doctor>>;
-              return switch (data) {
-                Loading() => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                Success() => _DoctorList(
-                    doctors: data.value,
-                  ),
-                Error() => FullWidthFilledButton(
-                    child: const Text('Перезагрузить'),
-                    onPressed: () {
-                      wm.loadDoctors();
-                    },
-                  )
-              };
-            },
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: wm.colorScheme.background,
+        foregroundColor: wm.colorScheme.onBackground,
+        centerTitle: false,
+        title: Text('Доктора', style: wm.textScheme.bold30),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          children: [
+            StateNotifierBuilder(
+              listenableState: wm.doctors,
+              builder: (_, doctors) {
+                final data = doctors as Result<List<Doctor>>;
+                return switch (data) {
+                  Loading() => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  Success() => _DoctorList(
+                      doctors: data.value,
+                    ),
+                  Error() => FullWidthFilledButton(
+                      child: const Text('Перезагрузить'),
+                      onPressed: () {
+                        wm.loadDoctors();
+                      },
+                    )
+                };
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
