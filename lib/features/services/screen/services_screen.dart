@@ -8,18 +8,17 @@ import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_b
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 import 'package:mobidoc/features/services/screen/services_screen_wm.dart';
 
-/// Main widget for ServicesScreen module
+/// Main widget for ServicesScreen module.
 @RoutePage(name: AppRouteNames.servicesScreen)
-class ServicesScreenWidget
-    extends ElementaryWidget<IServicesScreenWidgetModel> {
-  const ServicesScreenWidget({
+class ServicesScreen extends ElementaryWidget<IServicesScreenWidgetModel> {
+  /// Create an instance [ServicesScreen].
+  const ServicesScreen({
     Key? key,
     WidgetModelFactory wmFactory = defaultServicesScreenWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
   @override
   Widget build(IServicesScreenWidgetModel wm) {
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -32,7 +31,6 @@ class ServicesScreenWidget
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView(
           children: [
-
             StateNotifierBuilder(
               listenableState: wm.services,
               builder: (_, services) {

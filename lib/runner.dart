@@ -28,14 +28,14 @@ void _runApp() {
     },
     (exception, stack) {
       // TODO(init-project): Инициализировать Crashlytics.
-      // FirebaseCrashlytics.instance.recordError(exception, stack);
+      // FirebaseCrashlytics.instance.recordError(exception, stack);.
     },
   );
 }
 
 void _initLogger() {
   // TODO(init-project): Инициализировать CrashlyticsRemoteLogStrategy.
-  // RemoteLogger.addStrategy(CrashlyticsRemoteLogStrategy());
+  // RemoteLogger.addStrategy(CrashlyticsRemoteLogStrategy());.
   Logger.addStrategy(DebugLogStrategy());
   Logger.addStrategy(RemoteLogStrategy());
 }

@@ -4,20 +4,20 @@ import 'package:mobidoc/features/common/mixin/theme_mixin.dart';
 import 'package:mobidoc/features/dash/screen/dash_screen.dart';
 import 'package:mobidoc/features/dash/screen/dash_screen_model.dart';
 
-/// Factory for [DashScreenWidgetModel].
-DashScreenWidgetModel dashScreenWmFactory(
+/// Factory for [DashScreenWM].
+DashScreenWM dashScreenWmFactory(
   BuildContext _,
 ) {
   final model = DashScreenModel();
-  return DashScreenWidgetModel(model);
+  return DashScreenWM(model);
 }
 
 /// Widget model for [DashScreen].
-class DashScreenWidgetModel extends WidgetModel<DashScreen, DashScreenModel>
+class DashScreenWM extends WidgetModel<DashScreen, DashScreenModel>
     with ThemeWMMixin
     implements IDashScreenWidgetModel {
-  /// Create an instance [DashScreenWidgetModel].
-  DashScreenWidgetModel(DashScreenModel model) : super(model);
+  /// Create an instance [DashScreenWM].
+  DashScreenWM(DashScreenModel model) : super(model);
 }
 
 /// Interface of [IDashScreenWidgetModel].

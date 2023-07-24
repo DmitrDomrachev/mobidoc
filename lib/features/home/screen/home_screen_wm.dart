@@ -10,8 +10,8 @@ HomeScreenWM defaultHomeScreenWidgetModelFactory(BuildContext _) {
   return HomeScreenWM(HomeScreenModel());
 }
 
-/// Default widget model for [HomeScreenWidget].
-class HomeScreenWM extends WidgetModel<HomeScreenWidget, HomeScreenModel>
+/// Default widget model for [HomeScreen].
+class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel>
     with ThemeWMMixin
     implements IHomeScreenWidgetModel {
   final _navBarItems = [
@@ -46,6 +46,7 @@ class HomeScreenWM extends WidgetModel<HomeScreenWidget, HomeScreenModel>
     ];
   }
 
+  /// Create an instance [HomeScreenWM].
   HomeScreenWM(HomeScreenModel model) : super(model);
 }
 

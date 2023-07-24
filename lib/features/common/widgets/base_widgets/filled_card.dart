@@ -12,8 +12,11 @@ class FilledCard extends StatelessWidget {
     super.key,
   });
 
+  /// Title text.
   final String title;
+  /// Subtitle text.
   final String subtitle;
+  /// The function that will be called when the button is pressed.
   final Function()? onPressed;
 
   @override

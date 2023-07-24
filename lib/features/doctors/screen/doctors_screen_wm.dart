@@ -8,22 +8,27 @@ import 'package:mobidoc/features/doctors/screen/doctors_screen.dart';
 import 'package:mobidoc/features/doctors/screen/doctors_screen_model.dart';
 import 'package:provider/provider.dart';
 
-DoctorsScreenWidgetModel defaultDoctorsScreenWidgetModelFactory(
+/// Factory [DoctorsScreenWM].
+DoctorsScreenWM defaultDoctorsScreenWidgetModelFactory(
   BuildContext context,
 ) {
   final appDependencies = context.read<IAppScope>();
-  return DoctorsScreenWidgetModel(
+  return DoctorsScreenWM(
     DoctorsScreenModel(appDependencies.doctorRepository),
   );
 }
 
 /// Default widget model for DoctorsScreenWidget.
-class DoctorsScreenWidgetModel
-    extends WidgetModel<DoctorsScreenWidget, DoctorsScreenModel>
+class DoctorsScreenWM extends WidgetModel<DoctorsScreen, DoctorsScreenModel>
     with ThemeWMMixin
     implements IDoctorsScreenWidgetModel {
-  DoctorsScreenWidgetModel(DoctorsScreenModel model) : super(model);
   final _doctors = StateNotifier<Result<List<Doctor>>>(initValue: Loading());
+
+  @override
+  ListenableState<Result<List<Doctor>>> get doctors => _doctors;
+
+  /// Create an instance[DoctorsScreenWM].
+  DoctorsScreenWM(DoctorsScreenModel model) : super(model);
 
   @override
   void initWidgetModel() {
@@ -37,14 +42,14 @@ class DoctorsScreenWidgetModel
       ..accept(Loading())
       ..accept(await model.doctorRepository.getDoctors());
   }
-
-  @override
-  ListenableState<Result<List<Doctor>>> get doctors => _doctors;
 }
 
+/// Interface of [DoctorsScreenWM].
 abstract class IDoctorsScreenWidgetModel extends IWidgetModel
     with ThemeIModelMixin {
+  /// Listener list of doctors.
   ListenableState<Result<List<Doctor>>> get doctors;
 
+  /// Function of loading the list of doctors.
   Future<void> loadDoctors();
 }
