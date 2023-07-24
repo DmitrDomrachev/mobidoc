@@ -3,7 +3,7 @@ import 'package:mobidoc/features/doctors/domain/repository/doctor_repository.dar
 
 /// Default Elementary model for DoctorsScreen module
 class DoctorsScreenModel extends ElementaryModel {
-  final DoctorRepository repository;
+  final DoctorRepository doctorRepository;
 
-  DoctorsScreenModel(this.repository);
+  DoctorsScreenModel(this.doctorRepository);
 }

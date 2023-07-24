@@ -1,5 +1,6 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidoc/api/data/result.dart';
 import 'package:mobidoc/api/data/service/service.dart';
 import 'package:mobidoc/features/app/di/app_scope.dart';
 import 'package:mobidoc/features/common/mixin/theme_mixin.dart';
@@ -22,27 +23,29 @@ class ServicesScreenWidgetModel
     with ThemeWMMixin
     implements IServicesScreenWidgetModel {
   ServicesScreenWidgetModel(ServicesScreenModel model) : super(model);
-  final _services = StateNotifier<List<Service>>(initValue: []);
+
+  final _services = StateNotifier<Result<List<Service>>>(initValue: Loading());
 
   @override
-  ListenableState<List<Service>> get services => _services;
+  ListenableState<Result<List<Service>>> get services => _services;
 
   @override
   void initWidgetModel() {
     super.initWidgetModel();
-    _loadServices();
+    loadServices();
   }
 
-  Future<void> _loadServices() async {
-    try {
-      _services.accept(await model.serviceRepository.getServices());
-    } catch (e) {
-      debugPrint(e.toString());
-    }
+  @override
+  Future<void> loadServices() async {
+    _services
+      ..accept(Loading())
+      ..accept(await model.serviceRepository.getServices());
   }
 }
 
 abstract class IServicesScreenWidgetModel extends IWidgetModel
     with ThemeIModelMixin {
-  ListenableState<List<Service>> get services;
+  ListenableState<Result<List<Service>>> get services;
+
+  Future<void> loadServices();
 }
