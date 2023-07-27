@@ -75,6 +75,8 @@ class DoctorCard extends StatelessWidget {
             Text(
               info,
               style: textTheme.regular14,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
           ],
         ),

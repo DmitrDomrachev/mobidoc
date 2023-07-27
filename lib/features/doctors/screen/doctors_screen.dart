@@ -5,7 +5,7 @@ import 'package:mobidoc/api/data/doctor/doctor.dart';
 import 'package:mobidoc/api/data/result.dart';
 import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_button.dart';
 import 'package:mobidoc/features/doctors/screen/doctors_screen_wm.dart';
-import 'package:mobidoc/features/doctors/widgets/doctor_card.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/doctor_card.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 
 /// Main widget for DoctorsScreen module.

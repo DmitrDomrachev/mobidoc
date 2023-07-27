@@ -41,7 +41,7 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel>
     return [
       MainRouter(),
       ServicesRouter(),
-      const CardRouter(),
+      CardRouter(),
       DoctorsRouter(),
     ];
   }
