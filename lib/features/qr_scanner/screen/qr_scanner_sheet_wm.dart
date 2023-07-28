@@ -35,7 +35,7 @@ class QrScannerSheetWM extends WidgetModel<QrScannerSheet, QrScannerSheetModel>
   void onDetect(BarcodeCapture barcodeCapture) {
     final data = barcodeCapture.barcodes.first.rawValue ?? '';
     if (data.length == 6) {
-      Navigator.of(context).pop(data);
+      Navigator.of(context).pop(int.parse(data));
     }
   }
 

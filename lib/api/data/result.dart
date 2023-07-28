@@ -16,8 +16,8 @@ class Loading<T> extends Result<T> {}
 /// Error state that provides the exception.
 class Error<T> extends Result<T> {
   /// @nodoc.
-  final Exception exception;
+  final Exception? exception;
 
   /// Create an instance [Error].
-  Error(this.exception);
+  Error([this.exception]);
 }

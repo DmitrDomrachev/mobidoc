@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mobidoc/api/data/doctor/doctor.dart';
+import 'package:mobidoc/api/data/medical_card/medical_card.dart';
 import 'package:mobidoc/api/data/service/service.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -18,4 +19,8 @@ abstract class ApiClient {
   /// A method that returns a list of [Service] from the server.
   @GET('services')
   Future<List<Service>> getServices();
+
+  /// A method that return a list of [Service] from the server.
+  @GET('medical_cards')
+  Future<List<MedicalCard>> getMedicalCards();
 }

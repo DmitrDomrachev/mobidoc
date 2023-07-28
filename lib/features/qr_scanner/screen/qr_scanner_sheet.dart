@@ -58,7 +58,7 @@ class QrScannerSheet
                       ScanStateInit() =>
                         const Text('Запрошены права на доступ к камере.'),
                       ScanStateSuccess() => MobileScanner(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           onDetect: wm.onDetect,
                         ),
                       ScanStateError() => Center(
