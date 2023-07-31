@@ -30,65 +30,53 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Войти',
-                      style: wm.textScheme.bold22,
-                    ),
-                    _LoginTextFields(
-                      loginController: wm.loginController,
-                      passwordController: wm.passwordController,
-                    ),
-                  ],
-                ),
+              Text(
+                'Войти',
+                style: wm.textScheme.bold22,
               ),
-              const SizedBox(
-                height: 36,
+              _LoginTextFields(
+                loginController: wm.loginController,
+                passwordController: wm.passwordController,
               ),
-              Expanded(
-                child: EntityStateNotifierBuilder<UserLoginModel>(
-                  listenableEntityState: wm.loginState,
-                  builder: (_, user) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        FullWidthFilledButton(
-                          child: Text(
-                            'Войти',
-                            style: wm.textScheme.medium16,
-                          ),
-                          onPressed: wm.login,
+              EntityStateNotifierBuilder<UserLoginModel>(
+                listenableEntityState: wm.loginState,
+                builder: (_, user) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      FullWidthFilledButton(
+                        child: Text(
+                          'Войти',
+                          style: wm.textScheme.medium16,
                         ),
-                      ],
-                    );
-                  },
-                  loadingBuilder: (_, __) {
-                    return const Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        _LoadingButton(),
-                      ],
-                    );
-                  },
-                  errorBuilder: (_, __, ___) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Неверный логин/пароль'),
-                        FullWidthFilledButton(
-                          child: Text(
-                            'Войти',
-                            style: wm.textScheme.medium16,
-                          ),
-                          onPressed: wm.login,
+                        onPressed: wm.login,
+                      ),
+                    ],
+                  );
+                },
+                loadingBuilder: (_, __) {
+                  return const Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      _LoadingButton(),
+                    ],
+                  );
+                },
+                errorBuilder: (_, __, ___) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Неверный логин/пароль'),
+                      FullWidthFilledButton(
+                        child: Text(
+                          'Войти',
+                          style: wm.textScheme.medium16,
                         ),
-                      ],
-                    );
-                  },
-                ),
+                        onPressed: wm.login,
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           ),
