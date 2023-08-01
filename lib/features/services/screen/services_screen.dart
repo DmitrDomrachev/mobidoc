@@ -19,39 +19,42 @@ class ServicesScreenWidget
 
   @override
   Widget build(IServicesScreenWidgetModel wm) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: ListView(
-        children: [
-          Text(
-            'Услуги',
-            style: wm.textScheme.bold30,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          StateNotifierBuilder(
-            listenableState: wm.services,
-            builder: (_, services) {
-              final data = services as Result<List<Service>>;
-              return switch (data) {
-                Loading() => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                Success() => _ServicesList(
-                    services: data.value,
-                  ),
-                Error() =>
-                    FullWidthFilledButton(
-                    child: const Text('Перезагрузить'),
-                    onPressed: () {
-                      wm.loadServices();
-                    },
-                  ),
-              };
-            },
-          ),
-        ],
+
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: wm.colorScheme.background,
+        foregroundColor: wm.colorScheme.onBackground,
+        centerTitle: false,
+        title: Text('Сервисы', style: wm.textScheme.bold30),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: ListView(
+          children: [
+
+            StateNotifierBuilder(
+              listenableState: wm.services,
+              builder: (_, services) {
+                final data = services as Result<List<Service>>;
+                return switch (data) {
+                  Loading() => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  Success() => _ServicesList(
+                      services: data.value,
+                    ),
+                  Error() => FullWidthFilledButton(
+                      child: const Text('Перезагрузить'),
+                      onPressed: () {
+                        wm.loadServices();
+                      },
+                    ),
+                };
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
