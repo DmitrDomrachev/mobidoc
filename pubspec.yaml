@@ -7,6 +7,8 @@ dependencies:
   auto_route: 7.4.0
   dio: 5.1.1
   elementary: 2.0.0
+  firebase_core: ^2.15.0
+  firebase_messaging: ^14.6.5
   flutter:
     sdk: flutter
   flutter_localizations:
