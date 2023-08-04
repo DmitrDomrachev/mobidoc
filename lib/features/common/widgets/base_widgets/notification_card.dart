@@ -12,8 +12,13 @@ class NotificationCard extends StatelessWidget {
     super.key,
   });
 
+  /// Doctor type.
   final String doctorType;
+
+  /// Self assessment value.
   final int selfAssessment;
+
+  /// Notification date.
   final String date;
 
   @override

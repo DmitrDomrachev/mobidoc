@@ -1,7 +1,12 @@
 /// Model with user login data.
 class UserLoginModel {
+  /// User login.
   final String login;
+
+  /// User password.
   final String password;
+
+  /// User token.
   final String token;
 
   /// Create an instance [UserLoginModel].

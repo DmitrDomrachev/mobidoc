@@ -18,7 +18,7 @@ class NotificationPages extends StatelessWidget {
         itemCount: 3,
         itemBuilder: (_, index) {
           return Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: NotificationCard(
               doctorType: 'Терапевт',
               selfAssessment: 8,

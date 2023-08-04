@@ -2,17 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
 
+/// Widget for displaying information about the doctor.
 class DoctorCard extends StatelessWidget {
-  const DoctorCard(
-      {super.key,
-      required this.name,
-      required this.type,
-      required this.info,
-      this.photo});
+  /// Create an instance [DoctorCard].
+  const DoctorCard({
+    required this.name,
+    required this.type,
+    required this.info,
+    this.photo,
+    super.key,
+  });
 
+  /// Doctor`s name.
   final String name;
+
+  /// Doctor`s type.
   final String type;
+
+  /// Doctor`s info.
   final String info;
+
+  /// Doctor`s photo.
   final String? photo;
 
   @override
@@ -65,6 +75,8 @@ class DoctorCard extends StatelessWidget {
             Text(
               info,
               style: textTheme.regular14,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
           ],
         ),
