@@ -1,26 +1,27 @@
 import 'package:mobidoc/api/service/api_client.dart';
-import 'package:mobidoc/features/login/domain/repository/auth_repository.dart';
 import 'package:mobidoc/features/login/model/user_login_model.dart';
 import 'package:mobidoc/persistence/storage/auth_storage/auth_storage.dart';
 
+/// AuthRepository is a class responsible for managing user authentication and token handling.
 class AuthRepository {
-  final ApiClient apiClient;
-  final AuthStorage authStorage;
+  final ApiClient _apiClient;
+  final AuthStorage _authStorage;
 
-  AuthRepository(this.apiClient, this.authStorage);
+  /// Creates an instance [AuthRepository].
+  AuthRepository(this._apiClient, this._authStorage);
 
-  @override
+  /// Retrieves the JWT from local storage.
   Future<String?> getToken() {
-    return authStorage.readJWT();
+    return _authStorage.readJWT();
   }
 
-  @override
+  /// Requests a new JWT from the server using the provided [loginModel].
   Future<String> requestToken(UserLoginModel loginModel) async {
-    return (await apiClient.getJWT(loginModel)).token;
+    return (await _apiClient.getJWT(loginModel)).token;
   }
 
-  @override
+  /// Saves the provided [value] as the JWT into local storage.
   Future<void> saveToken(String value) async {
-    await authStorage.saveJWT(value);
+    await _authStorage.saveJWT(value);
   }
 }

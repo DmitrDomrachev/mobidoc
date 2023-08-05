@@ -9,12 +9,15 @@ import 'package:mobidoc/features/login/screen/login_screen.dart';
 class LoginScreenModel extends ElementaryModel {
   final AuthInteractor _interactor;
 
+  /// Create an instance [LoginScreen].
   LoginScreenModel(this._interactor);
 
+  /// Checks if the user is authenticated.
   Future<bool> isAuth() async {
     return _interactor.isAuth();
   }
 
+  /// Performs the login process.
   Future<LoginState> login(UserLoginModel loginModel) async {
     try {
       await _interactor.login(loginModel);

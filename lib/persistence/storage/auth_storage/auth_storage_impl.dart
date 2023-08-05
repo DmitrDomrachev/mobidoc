@@ -1,7 +1,9 @@
 import 'package:mobidoc/persistence/storage/auth_storage/auth_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// Implementation of the AuthStorage interface.
 class AuthStorageImpl implements AuthStorage {
+  /// Creates an instance of [AuthStorageImpl].
   AuthStorageImpl();
 
   @override

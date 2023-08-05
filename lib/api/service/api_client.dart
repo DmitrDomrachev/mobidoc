@@ -26,6 +26,7 @@ abstract class ApiClient {
   @GET('medical_cards')
   Future<List<MedicalCard>> getMedicalCards();
 
+  /// A method that return a JWT token from the server.
   @POST('login_check')
   Future<Token> getJWT(@Body() UserLoginModel loginModel);
 

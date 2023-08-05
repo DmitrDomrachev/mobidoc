@@ -16,7 +16,6 @@ import 'package:mobidoc/features/doctors/domain/repository/doctor_repository.dar
 import 'package:mobidoc/features/doctors/domain/repository/doctor_repository_impl.dart';
 import 'package:mobidoc/features/login/domain/interactor/auth_interactor.dart';
 import 'package:mobidoc/features/login/domain/repository/auth_repository.dart';
-import 'package:mobidoc/features/login/domain/repository/auth_repository.dart';
 import 'package:mobidoc/features/navigation/service/app_router.dart';
 import 'package:mobidoc/features/services/domain/repository/service_repository.dart';
 import 'package:mobidoc/features/services/domain/repository/service_repository_impl.dart';
@@ -161,12 +160,16 @@ class AppScope implements IAppScope {
 
 /// App dependencies.
 abstract class IAppScope {
+  /// Repository for working with the Doctor model.
   DoctorRepository get doctorRepository;
 
+  /// Repository for working with the Service model.
   ServiceRepository get serviceRepository;
 
+  /// Repository for working with the Card model.
   MedicalCardRepository get cardRepository;
 
+  /// Interactor for authorization logic.
   AuthInteractor get authInteractor;
 
   /// Interface for handle error in business logic.

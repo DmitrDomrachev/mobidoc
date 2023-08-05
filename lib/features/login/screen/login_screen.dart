@@ -59,7 +59,7 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                     WrongDataLoginState() => Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Неверный логин/пароль'),
+                          const Text('Неверный логин/пароль'),
                           FullWidthFilledButton(
                             child: Text(
                               'Войти',
@@ -72,7 +72,7 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                     RequestErrorLoginState() => Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Ошибка отправки запроса'),
+                          const Text('Ошибка отправки запроса'),
                           FullWidthFilledButton(
                             child: Text(
                               'Войти',
@@ -82,7 +82,7 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                           ),
                         ],
                       ),
-                    LoadingLoginState() => Column(
+                    LoadingLoginState() => const Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           _LoadingButton(),
@@ -90,29 +90,6 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                       ),
                   };
                 },
-                // loadingBuilder: (_, __) {
-                //   return const Column(
-                //     mainAxisAlignment: MainAxisAlignment.end,
-                //     children: [
-                //       _LoadingButton(),
-                //     ],
-                //   );
-                // },
-                // errorBuilder: (_, __, ___) {
-                //   return Column(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       const Text('Неверный логин/пароль'),
-                //       FullWidthFilledButton(
-                //         child: Text(
-                //           'Войти',
-                //           style: wm.textScheme.medium16,
-                //         ),
-                //         onPressed: wm.login,
-                //       ),
-                //     ],
-                //   );
-                // },
               ),
             ],
           ),

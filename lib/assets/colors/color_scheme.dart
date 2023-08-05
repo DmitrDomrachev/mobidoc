@@ -42,10 +42,13 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
   /// Color for show unselected items.
   final Color unselectedItem;
 
+  /// Color for gradient.
   final Color gradientStart;
 
+  /// Color for gradient.
   final Color gradientEnd;
 
+  /// Color for divider.
   final Color lineColor;
 
   /// Base light theme of the app.

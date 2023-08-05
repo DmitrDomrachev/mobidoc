@@ -55,9 +55,8 @@ class _AppState extends State<App> {
   }
 
   Future<void> _getToken() async {
-    await FirebaseMessaging.instance
-        .getToken()
-        .then((value) => debugPrint('token: $value'));
+    final token = await FirebaseMessaging.instance.getToken();
+    debugPrint('firebase token: $token');
   }
 
   @override
