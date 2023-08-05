@@ -1,23 +1,22 @@
 /// Model with user login data.
 class UserLoginModel {
   /// User login.
-  final String login;
+  final String email;
 
   /// User password.
   final String password;
 
-  /// User token.
-  final String token;
-
   /// Create an instance [UserLoginModel].
   const UserLoginModel({
-    required this.login,
+    required this.email,
     required this.password,
-    required this.token,
   });
 
   @override
   String toString() {
-    return 'UserLoginModel{login: $login, password: $password, token: $token}';
+    return 'UserLoginModel{login: $email, password: $password}';
   }
+
+  Map<String, dynamic> toJson() =>
+      {'email': email, 'password': password} as Map<String, dynamic>;
 }

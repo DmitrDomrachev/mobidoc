@@ -14,9 +14,14 @@ import 'package:mobidoc/features/common/service/theme/theme_service.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service_impl.dart';
 import 'package:mobidoc/features/doctors/domain/repository/doctor_repository.dart';
 import 'package:mobidoc/features/doctors/domain/repository/doctor_repository_impl.dart';
+import 'package:mobidoc/features/login/domain/interactor/auth_interactor.dart';
+import 'package:mobidoc/features/login/domain/repository/auth_repository.dart';
+import 'package:mobidoc/features/login/domain/repository/auth_repository.dart';
 import 'package:mobidoc/features/navigation/service/app_router.dart';
 import 'package:mobidoc/features/services/domain/repository/service_repository.dart';
 import 'package:mobidoc/features/services/domain/repository/service_repository_impl.dart';
+import 'package:mobidoc/persistence/storage/auth_storage/auth_storage.dart';
+import 'package:mobidoc/persistence/storage/auth_storage/auth_storage_impl.dart';
 import 'package:mobidoc/persistence/storage/theme_storage/theme_storage.dart';
 import 'package:mobidoc/persistence/storage/theme_storage/theme_storage_impl.dart';
 import 'package:mobidoc/util/default_error_handler.dart';
@@ -30,9 +35,12 @@ class AppScope implements IAppScope {
   late final DoctorRepository _doctorRepository;
   late final ServiceRepository _serviceRepository;
   late final MedicalCardRepository _cardRepository;
+  late final AuthRepository _authRepository;
   late final ErrorHandler _errorHandler;
   late final AppRouter _router;
   late final IThemeService _themeService;
+  late final AuthStorage _authStorage;
+  late final AuthInteractor _authInteractor;
 
   @override
   late VoidCallback applicationRebuilder;
@@ -55,6 +63,9 @@ class AppScope implements IAppScope {
   @override
   MedicalCardRepository get cardRepository => _cardRepository;
 
+  @override
+  AuthInteractor get authInteractor => _authInteractor;
+
   late IThemeModeStorage _themeModeStorage;
 
   /// Create an instance [AppScope].
@@ -64,12 +75,20 @@ class AppScope implements IAppScope {
       InterceptorsWrapper(
         onError: (e, handler) {
           if (e.error is SocketException) {
-            return handler.reject(RequestException('No internet: ${e.message}',
-                requestOptions: e.requestOptions));
+            return handler.reject(
+              RequestException(
+                'No internet: ${e.message}',
+                requestOptions: e.requestOptions,
+              ),
+            );
           }
           if (e.type == DioErrorType.badResponse) {
-            return handler.reject(RequestException('HTTP error: ${e.message}',
-                requestOptions: e.requestOptions));
+            return handler.reject(
+              RequestException(
+                'HTTP error: ${e.message}',
+                requestOptions: e.requestOptions,
+              ),
+            );
           }
           return handler.next(e);
         },
@@ -78,12 +97,15 @@ class AppScope implements IAppScope {
 
     _dio = _initDio(additionalInterceptors);
     _apiClient = ApiClient(_dio);
+    _authStorage = AuthStorageImpl();
     _doctorRepository = DoctorRepositoryImpl(_apiClient);
     _serviceRepository = ServiceRepositoryImpl(_apiClient);
     _cardRepository = MedicalCardRepositoryImpl(_apiClient);
+    _authRepository = AuthRepository(_apiClient, _authStorage);
     _errorHandler = DefaultErrorHandler();
     _router = AppRouter.instance();
     _themeModeStorage = ThemeModeStorageImpl();
+    _authInteractor = AuthInteractor(_authRepository);
   }
 
   @override
@@ -95,7 +117,7 @@ class AppScope implements IAppScope {
   }
 
   Dio _initDio(Iterable<Interceptor> additionalInterceptors) {
-    const timeout = Duration(seconds: 30);
+    const timeout = Duration(seconds: 2);
 
     final dio = Dio();
 
@@ -144,6 +166,8 @@ abstract class IAppScope {
   ServiceRepository get serviceRepository;
 
   MedicalCardRepository get cardRepository;
+
+  AuthInteractor get authInteractor;
 
   /// Interface for handle error in business logic.
   ErrorHandler get errorHandler;
