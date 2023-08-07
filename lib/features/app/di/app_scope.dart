@@ -8,6 +8,8 @@ import 'package:mobidoc/api/errors/request_exception.dart';
 import 'package:mobidoc/api/service/api_client.dart';
 import 'package:mobidoc/config/app_config.dart';
 import 'package:mobidoc/config/environment/environment.dart';
+import 'package:mobidoc/features/card/domain/medical_card_repository.dart';
+import 'package:mobidoc/features/card/domain/medical_card_repository_impl.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service.dart';
 import 'package:mobidoc/features/common/service/theme/theme_service_impl.dart';
 import 'package:mobidoc/features/doctors/domain/repository/doctor_repository.dart';
@@ -27,6 +29,7 @@ class AppScope implements IAppScope {
   late final ApiClient _apiClient;
   late final DoctorRepository _doctorRepository;
   late final ServiceRepository _serviceRepository;
+  late final MedicalCardRepository _cardRepository;
   late final ErrorHandler _errorHandler;
   late final AppRouter _router;
   late final IThemeService _themeService;
@@ -48,6 +51,9 @@ class AppScope implements IAppScope {
 
   @override
   ServiceRepository get serviceRepository => _serviceRepository;
+
+  @override
+  MedicalCardRepository get cardRepository => _cardRepository;
 
   late IThemeModeStorage _themeModeStorage;
 
@@ -74,6 +80,7 @@ class AppScope implements IAppScope {
     _apiClient = ApiClient(_dio);
     _doctorRepository = DoctorRepositoryImpl(_apiClient);
     _serviceRepository = ServiceRepositoryImpl(_apiClient);
+    _cardRepository = MedicalCardRepositoryImpl(_apiClient);
     _errorHandler = DefaultErrorHandler();
     _router = AppRouter.instance();
     _themeModeStorage = ThemeModeStorageImpl();
@@ -135,6 +142,8 @@ abstract class IAppScope {
   DoctorRepository get doctorRepository;
 
   ServiceRepository get serviceRepository;
+
+  MedicalCardRepository get cardRepository;
 
   /// Interface for handle error in business logic.
   ErrorHandler get errorHandler;

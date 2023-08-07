@@ -6,8 +6,9 @@ import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 
 /// Main widget for HomeScreen module.
 @RoutePage(name: AppRouteNames.homeScreen)
-class HomeScreenWidget extends ElementaryWidget<IHomeScreenWidgetModel> {
-  const HomeScreenWidget({
+class HomeScreen extends ElementaryWidget<IHomeScreenWidgetModel> {
+  /// Create an instance [HomeScreen].
+  const HomeScreen({
     Key? key,
     WidgetModelFactory wmFactory = defaultHomeScreenWidgetModelFactory,
   }) : super(wmFactory, key: key);

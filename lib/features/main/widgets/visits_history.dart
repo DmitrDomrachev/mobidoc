@@ -26,7 +26,7 @@ class VisitsHistory extends StatelessWidget {
           ...List.generate(
             6,
             (index) => Padding(
-              padding: EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.only(bottom: 16),
               child: FilledCard(
                 title: 'Терапевт',
                 subtitle: '$index сентября 2020',

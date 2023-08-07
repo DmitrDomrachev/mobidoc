@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mobidoc/assets/themes/theme_data.dart';
@@ -38,12 +39,25 @@ class _AppState extends State<App> {
         ..refreshConfigProxy(configStorage)
         ..createLogHistoryStrategy();
     }
+    _requestPermission();
+    _getToken();
   }
 
   void _rebuildApplication() {
     setState(() {
       _scope = widget.appScope..applicationRebuilder = _rebuildApplication;
     });
+  }
+
+  Future<void> _requestPermission() async {
+    final messaging = FirebaseMessaging.instance;
+    await messaging.requestPermission();
+  }
+
+  Future<void> _getToken() async {
+    await FirebaseMessaging.instance
+        .getToken()
+        .then((value) => debugPrint('token: $value'));
   }
 
   @override
@@ -57,10 +71,7 @@ class _AppState extends State<App> {
         animation: _themeService,
         builder: (context, child) {
           return MaterialApp.router(
-
             theme: AppThemeData.lightTheme,
-            // darkTheme: AppThemeData.darkTheme,
-            // themeMode: _themeService.currentThemeMode,
 
             /// Localization.
             locale: _localizations.first,

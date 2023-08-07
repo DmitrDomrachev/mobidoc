@@ -4,10 +4,12 @@ import 'package:mobidoc/api/errors/request_exception.dart';
 import 'package:mobidoc/api/service/api_client.dart';
 import 'package:mobidoc/features/doctors/domain/repository/doctor_repository.dart';
 
+/// DoctorRepository implementation.
 class DoctorRepositoryImpl implements DoctorRepository {
-  DoctorRepositoryImpl(this._client);
-
   final ApiClient _client;
+
+  /// Create an instance [DoctorRepositoryImpl].
+  DoctorRepositoryImpl(this._client);
 
   @override
   Future<Result<List<Doctor>>> getDoctors() async {

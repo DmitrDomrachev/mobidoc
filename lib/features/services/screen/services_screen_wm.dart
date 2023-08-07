@@ -8,26 +8,28 @@ import 'package:mobidoc/features/services/screen/services_screen.dart';
 import 'package:mobidoc/features/services/screen/services_screen_model.dart';
 import 'package:provider/provider.dart';
 
-ServicesScreenWidgetModel defaultServicesScreenWidgetModelFactory(
-    BuildContext context) {
+/// Factory [ServicesScreenWM].
+ServicesScreenWM defaultServicesScreenWidgetModelFactory(
+  BuildContext context,
+) {
   final appDependencies = context.read<IAppScope>();
 
-  return ServicesScreenWidgetModel(
+  return ServicesScreenWM(
     ServicesScreenModel(appDependencies.serviceRepository),
   );
 }
 
-/// Default widget model for ServicesScreenWidget
-class ServicesScreenWidgetModel
-    extends WidgetModel<ServicesScreenWidget, ServicesScreenModel>
+/// Default widget model for ServicesScreenWidget.
+class ServicesScreenWM extends WidgetModel<ServicesScreen, ServicesScreenModel>
     with ThemeWMMixin
     implements IServicesScreenWidgetModel {
-  ServicesScreenWidgetModel(ServicesScreenModel model) : super(model);
-
   final _services = StateNotifier<Result<List<Service>>>(initValue: Loading());
 
   @override
   ListenableState<Result<List<Service>>> get services => _services;
+
+  /// Create an instance [ServicesScreenWM].
+  ServicesScreenWM(ServicesScreenModel model) : super(model);
 
   @override
   void initWidgetModel() {
@@ -43,9 +45,12 @@ class ServicesScreenWidgetModel
   }
 }
 
+/// Interface of [ServicesScreenWM].
 abstract class IServicesScreenWidgetModel extends IWidgetModel
     with ThemeIModelMixin {
+  /// Listener list of services.
   ListenableState<Result<List<Service>>> get services;
 
+  /// Function of loading the list of services.
   Future<void> loadServices();
 }

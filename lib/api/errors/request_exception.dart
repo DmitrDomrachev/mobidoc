@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
 
+/// An exception that is thrown if an error in the client has been handled.
 class RequestException extends DioError {
-  final String message;
+  /// Error information message.
+  final String info;
 
-  RequestException(this.message, {required super.requestOptions});
+  /// Create an instance [RequestException].
+  RequestException(this.info, {required super.requestOptions});
 
   @override
   String toString() {
-    return 'RequestException: $message';
+    return 'RequestException: $info';
   }
 }

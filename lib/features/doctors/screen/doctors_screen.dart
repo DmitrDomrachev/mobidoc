@@ -5,13 +5,14 @@ import 'package:mobidoc/api/data/doctor/doctor.dart';
 import 'package:mobidoc/api/data/result.dart';
 import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_button.dart';
 import 'package:mobidoc/features/doctors/screen/doctors_screen_wm.dart';
-import 'package:mobidoc/features/doctors/widgets/doctor_card.dart';
+import 'package:mobidoc/features/common/widgets/base_widgets/doctor_card.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 
 /// Main widget for DoctorsScreen module.
 @RoutePage(name: AppRouteNames.doctorsScreen)
-class DoctorsScreenWidget extends ElementaryWidget<IDoctorsScreenWidgetModel> {
-  const DoctorsScreenWidget({
+class DoctorsScreen extends ElementaryWidget<IDoctorsScreenWidgetModel> {
+  /// Create an instance [DoctorsScreen].
+  const DoctorsScreen({
     Key? key,
     WidgetModelFactory wmFactory = defaultDoctorsScreenWidgetModelFactory,
   }) : super(wmFactory, key: key);
@@ -67,7 +68,7 @@ class _DoctorList extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ...(doctors as List<Doctor>).map(
+        ...doctors.map(
           (e) => Padding(
             padding: const EdgeInsets.only(bottom: 14.0),
             child: DoctorCard(
