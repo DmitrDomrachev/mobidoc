@@ -17,4 +17,8 @@ class AuthInteractor {
   Future<void> login(UserLoginModel loginModel) async {
     await _repository.saveToken(await _repository.requestToken(loginModel));
   }
+
+  Future<String?> getToken() async {
+    return _repository.getToken();
+  }
 }

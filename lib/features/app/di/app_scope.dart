@@ -6,6 +6,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:mobidoc/api/errors/request_exception.dart';
 import 'package:mobidoc/api/service/api_client.dart';
+import 'package:mobidoc/api/service/jwt_interceptor.dart';
 import 'package:mobidoc/config/app_config.dart';
 import 'package:mobidoc/config/environment/environment.dart';
 import 'package:mobidoc/features/card/domain/medical_card_repository.dart';
@@ -31,6 +32,7 @@ class AppScope implements IAppScope {
 
   late final Dio _dio;
   late final ApiClient _apiClient;
+  late final JwtInterceptor _jwtInterceptor;
   late final DoctorRepository _doctorRepository;
   late final ServiceRepository _serviceRepository;
   late final MedicalCardRepository _cardRepository;
@@ -69,8 +71,12 @@ class AppScope implements IAppScope {
 
   /// Create an instance [AppScope].
   AppScope() {
+    _authStorage = AuthStorageImpl();
+    _jwtInterceptor = JwtInterceptor(_authStorage);
+
     /// List interceptor. Fill in as needed.
     final additionalInterceptors = <Interceptor>[
+      _jwtInterceptor,
       InterceptorsWrapper(
         onError: (e, handler) {
           if (e.error is SocketException) {
@@ -96,7 +102,6 @@ class AppScope implements IAppScope {
 
     _dio = _initDio(additionalInterceptors);
     _apiClient = ApiClient(_dio);
-    _authStorage = AuthStorageImpl();
     _doctorRepository = DoctorRepositoryImpl(_apiClient);
     _serviceRepository = ServiceRepositoryImpl(_apiClient);
     _cardRepository = MedicalCardRepositoryImpl(_apiClient);
@@ -156,10 +161,15 @@ class AppScope implements IAppScope {
   Future<void> _onThemeModeChanged() async {
     await _themeModeStorage.saveThemeMode(mode: _themeService.currentThemeMode);
   }
+
+  @override
+  Dio get dio => _dio;
 }
 
 /// App dependencies.
 abstract class IAppScope {
+  Dio get dio;
+
   /// Repository for working with the Doctor model.
   DoctorRepository get doctorRepository;
 
