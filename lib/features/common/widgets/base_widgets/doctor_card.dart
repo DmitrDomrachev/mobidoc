@@ -40,25 +40,36 @@ class DoctorCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 ClipOval(
-                  child: Image.network(
-                    photo ??
-                        'https://www.photopills.com/sites/default/files/photopillers/benito-gaztelugatxe.jpg',
-                    width: 30,
-                    height: 30,
-                    fit: BoxFit.cover,
-                  ),
+                  child: photo != null
+                      ? Image.network(
+                          photo ??
+                              'https://www.photopills.com/sites/default/files/photopillers/benito-gaztelugatxe.jpg',
+                          width: 30,
+                          height: 30,
+                          fit: BoxFit.cover,
+                        )
+                      : Container(
+                          width: 30,
+                          height: 30,
+                          color: Colors.blue,
+                        ),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                Text(
-                  name,
-                  style: textTheme.bold22,
+                Flexible(
+                  child: Text(
+                    name,
+                    style: textTheme.bold22,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
               ],
             ),
