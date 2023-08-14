@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mobidoc/assets/colors/color_scheme.dart';
 import 'package:mobidoc/assets/text/text_extention.dart';
 import 'package:mobidoc/features/common/widgets/base_widgets/full_width_filled_button.dart';
-import 'package:mobidoc/features/login/model/user_login_model.dart';
+import 'package:mobidoc/features/login/model/login_state.dart';
 import 'package:mobidoc/features/login/screen/login_screen_wm.dart';
 import 'package:mobidoc/features/navigation/domain/entity/app_route_names.dart';
 
@@ -38,44 +38,57 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWM> {
                 loginController: wm.loginController,
                 passwordController: wm.passwordController,
               ),
-              EntityStateNotifierBuilder<UserLoginModel>(
-                listenableEntityState: wm.loginState,
-                builder: (_, user) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      FullWidthFilledButton(
-                        child: Text(
-                          'Войти',
-                          style: wm.textScheme.medium16,
-                        ),
-                        onPressed: wm.login,
+              StateNotifierBuilder<LoginState>(
+                listenableState: wm.loginState,
+                builder: (_, state) {
+                  final loginState = state as LoginState;
+                  return switch (loginState) {
+                    UnauthenticatedLoginState() => Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          FullWidthFilledButton(
+                            child: Text(
+                              'Войти',
+                              style: wm.textScheme.medium16,
+                            ),
+                            onPressed: wm.login,
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                },
-                loadingBuilder: (_, __) {
-                  return const Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      _LoadingButton(),
-                    ],
-                  );
-                },
-                errorBuilder: (_, __, ___) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Неверный логин/пароль'),
-                      FullWidthFilledButton(
-                        child: Text(
-                          'Войти',
-                          style: wm.textScheme.medium16,
-                        ),
-                        onPressed: wm.login,
+                    AuthenticatedLoginState() => Container(),
+                    WrongDataLoginState() => Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Неверный логин/пароль'),
+                          FullWidthFilledButton(
+                            child: Text(
+                              'Войти',
+                              style: wm.textScheme.medium16,
+                            ),
+                            onPressed: wm.login,
+                          ),
+                        ],
                       ),
-                    ],
-                  );
+                    RequestErrorLoginState() => Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Ошибка отправки запроса'),
+                          FullWidthFilledButton(
+                            child: Text(
+                              'Войти',
+                              style: wm.textScheme.medium16,
+                            ),
+                            onPressed: wm.login,
+                          ),
+                        ],
+                      ),
+                    LoadingLoginState() => const Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          _LoadingButton(),
+                        ],
+                      ),
+                  };
                 },
               ),
             ],

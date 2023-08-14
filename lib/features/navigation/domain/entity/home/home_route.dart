@@ -10,7 +10,6 @@ import 'package:mobidoc/features/navigation/service/app_router.dart';
 final homeRoute = AutoRoute(
   page: HomeRouter.page,
   path: AppRoutePaths.homePath,
-  // initial: true,
   children: [
     mainRoute,
     cardRoute,
